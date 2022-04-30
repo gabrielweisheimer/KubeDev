@@ -8,10 +8,10 @@ Agora vamos aumentar mais a complexidade das coisas, chegou a hora de executarum
 ## Ver docker-compose de cada microserviço:
 
 ### Rotten-potatoes-ms:
-https://github.com/gabrielweisheimer/KubeDev/rotten-potatoes-ms/docker-compose.yml
+https://github.com/gabrielweisheimer/KubeDev/blob/main/rotten-potatoes-ms/docker-compose.yml
 
 ### movie-ms:
-https://github.com/gabrielweisheimer/KubeDev/movie-ms/docker-compose.yml
+https://github.com/gabrielweisheimer/KubeDev/blob/main/movie/docker-compose.yml
 
 ### review-ms:
-https://github.com/gabrielweisheimer/KubeDev/review-ms/docker-compose.yml
+https://github.com/gabrielweisheimer/KubeDev/blob/main/review/docker-compose.yml
