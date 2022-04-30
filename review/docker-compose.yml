@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+  postgres-ms:
+    image: postgres:13.6
+    container_name: postgres-ms
+    volumes:
+      - postgres-vol:/var/lib/postgresql/data
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      POSTGRES_PASSWORD: Pg@123
+      POSTGRES_USER: pguser
+
+  review-ms:
+    image: gweisheimer/review-ms:0.1
+    container_name: review-ms
+    networks:
+      - rotten-potatoes-ms
+
+volumes:
+    postgres-vol:
+      external: true
+
+networks:
+    rotten-potatoes-ms:
+      name: rotten-potatoes-ms
+      driver: bridge

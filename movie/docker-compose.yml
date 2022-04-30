@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  mongodb-ms:
+    image: mongo:5.0.5
+    container_name: mongodb-ms
+    restart: on-failure
+    volumes:
+      - mongo-vol:/data/db
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: mongopwd
+
+  movie-ms:
+    image: gweisheimer/movie-ms:0.1
+    container_name: movie-ms
+    restart: on-failure
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      MONGODB_URI: mongodb://mongouser:mongopwd@mongodb-ms:27017/admin
+
+volumes:
+    mongo-vol:
+      external: true
+
+networks:
+    rotten-potatoes-ms:
+      name: rotten-potatoes-ms
+      driver: bridge

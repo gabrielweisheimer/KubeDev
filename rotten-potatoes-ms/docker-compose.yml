@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  rotten-potatoes-ms:
+    container_name: rotten-potatoes-ms
+    image: gweisheimer/rotten-potatoes-ms:0.1
+    ports:
+      - 5000:5000
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      MOVIE_SERVICE_URI: http://movie-ms:8181
+      REVIEW_SERVICE_URI: http://review-ms:80
+
+networks:
+    rotten-potatoes-ms:
+      name: rotten-potatoes-ms
+      driver: bridge

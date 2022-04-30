@@ -1,0 +1,70 @@
+version: '3.5'
+
+services:
+  rotten-potatoes-ms:
+    depends_on:
+      - review-ms
+    container_name: rotten-potatoes-ms
+    image: gweisheimer/rotten-potatoes-ms:0.1
+    ports:
+      - 5000:5000
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      MOVIE_SERVICE_URI: http://movie-ms:8181
+      REVIEW_SERVICE_URI: http://review-ms:80
+
+  postgres-ms:
+    image: postgres:13.6
+    container_name: postgres-ms
+    volumes:
+      - postgres-vol:/var/lib/postgresql/data
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      POSTGRES_PASSWORD: Pg@123
+      POSTGRES_USER: pguser
+
+  review-ms:
+    depends_on: 
+      - postgres-ms
+      - movie-ms
+    image: gweisheimer/review-ms:0.1
+    container_name: review-ms
+    networks:
+      - rotten-potatoes-ms
+
+  mongodb-ms:
+    image: mongo:5.0.5
+    container_name: mongodb-ms
+    restart: on-failure
+    volumes:
+      - mongo-vol:/data/db
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongouser
+      MONGO_INITDB_ROOT_PASSWORD: mongopwd
+
+  movie-ms:
+    depends_on: 
+      - mongodb-ms
+    image: gweisheimer/movie-ms:0.1
+    container_name: movie-ms
+    restart: on-failure
+    networks:
+      - rotten-potatoes-ms
+    environment:
+      MONGODB_URI: mongodb://mongouser:mongopwd@mongodb-ms:27017/admin
+
+
+volumes:
+    postgres-vol:
+      external: true
+    mongo-vol:
+      external: true
+
+networks:
+    rotten-potatoes-ms:
+      name: rotten-potatoes-ms
+      driver: bridge
