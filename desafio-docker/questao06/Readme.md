@@ -5,7 +5,19 @@ Agora vamos aumentar mais a complexidade das coisas, chegou a hora de executarum
 ## docker-compose up -d
 
 
-## Ver docker-compose de cada microserviço:
+# Build de cada microserviço:
+
+### Rotten-potatoes-ms:
+https://github.com/gabrielweisheimer/KubeDev/tree/main/rotten-potatoes-ms#passos-para-executar
+
+### movie-ms:
+https://github.com/gabrielweisheimer/KubeDev/tree/main/movie#passos-para-executar
+
+### review-ms:
+https://github.com/gabrielweisheimer/KubeDev/tree/main/review#passos-para-executar
+
+
+# Ver docker-compose de cada microserviço:
 
 ### Rotten-potatoes-ms:
 https://github.com/gabrielweisheimer/KubeDev/blob/main/rotten-potatoes-ms/docker-compose.yml
