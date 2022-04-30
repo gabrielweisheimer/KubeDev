@@ -1,0 +1,2 @@
+# Questão 05 
+- Chegou um cliente pra você que possui todas as suas aplicações em data centers e agestão dessas aplicações está cada vez mais complexa então pra iniciar um plano degestão unificada e migração pra um ambiente cloud, as aplicações serão migradas pracontainers. E hoje você precisa iniciar esse processo com um projeto piloto, o portal deconteúdos da empresa construido em Wordpress. Então hoje sua missão é criar esseambiente wordpress pronto para a equipe de publicidade começar a popular.
