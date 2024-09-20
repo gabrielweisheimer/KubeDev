@@ -1,0 +1,13 @@
+commonLabels: 
+  app: nginx-ingress-controller
+
+controller:
+  resources:
+    limits:
+      cpu: 250m
+      memory: 512Mi
+  service:
+    type: NodePort
+    nodePorts:
+      http: 30080
+      https: 30443
